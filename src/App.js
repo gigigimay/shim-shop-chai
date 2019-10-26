@@ -1,8 +1,10 @@
 import React from 'react'
-import { Container } from 'reactstrap'
 import axios from 'axios'
 import Navbar from './containers/Navbar'
 import Banner from './components/Banner'
+import ContentTop from './components/ContentTop'
+import ContentBottom from './components/ContentBottom'
+import Footer from './components/Footer'
 
 class App extends React.Component {
   state = {
@@ -15,6 +17,9 @@ class App extends React.Component {
 
   getData = async () => {
     const { data } = await axios.get('https://panjs.com/ywc.json')
+    data.navbarItems[0].key = 'regis'
+    data.navbarItems[1].key = 'howto'
+    data.navbarItems[2].key = 'shops'
     this.setState({ data })
     console.log('data', data)
   }
@@ -28,15 +33,9 @@ class App extends React.Component {
       <>
         <Navbar items={navbarItems} />
         <Banner />
-        <Container>
-          <div style={{ marginBottom: 24 }}>{duration}</div>
-          <div style={{ marginBottom: 24 }}>
-            {condition.split('<br>').map((item, index) => (
-              <p key={`condition${index}`}>{item}</p>
-            ))}
-          </div>
-          <div style={{ marginBottom: 24 }}>{detail}</div>
-        </Container>
+        <ContentTop duration={duration} />
+        <ContentBottom detail={detail} condition={condition} />
+        <Footer items={navbarItems} />
       </>
     )
   }

@@ -22,6 +22,7 @@
     "semi": ["error", "never"],
     "quotes": ["error", "single"],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/state-in-constructor": [0, "never"]
+    "react/state-in-constructor": [0],
+    "react/prop-types": [0]
   }
 }

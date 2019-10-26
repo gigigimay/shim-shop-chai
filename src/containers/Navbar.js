@@ -17,7 +17,7 @@ const NavbarContainer = styled(Container)`
   left: 0;
   right: 0;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  z-index: 10;
 
   @media (max-width: ${BREAKPOINT.sm - 1}px) {
     padding-top: 8px;
@@ -28,9 +28,11 @@ const NavbarContainer = styled(Container)`
 
 const Item = styled(Col)`
   padding: 16px;
+  font-family: 'Kanit', sans-serif;
   a {
     text-decoration: none;
     color: ${COLOR.body};
+    font-size: 14px;
   }
   a:hover {
     color: ${COLOR.blue};
@@ -89,8 +91,8 @@ class Navbar extends React.Component {
 
   renderItems = () => {
     const { items } = this.props
-    return items && items.map((item, index) => (
-      <Item sm="auto" key={`navbarItem${index}`} className="hidden-xs">
+    return items && items.map((item) => (
+      <Item sm="auto" key={item.key} className="hidden-xs">
         <a href={item.href} target="_blank" rel="noopener noreferrer">
           {item.label}
         </a>

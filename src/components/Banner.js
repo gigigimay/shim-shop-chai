@@ -30,7 +30,7 @@ const Logo = styled.div`
 
 export default () => (
   <Container fluid>
-    <Row className="noMargin">
+    <Row>
       <BannerImage image={IMAGE.banner.top.left} />
       <BannerImage image={IMAGE.banner.top.center}>
         <Logo>
