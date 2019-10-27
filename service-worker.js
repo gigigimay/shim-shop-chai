@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/shim-shop-chai/precache-manifest.1fcc57f24037169b3ba574be5607a1db.js"
+  "/shim-shop-chai/precache-manifest.7ee3c5fb95955a9b023cd0e534b62905.js"
 );
 
 self.addEventListener('message', (event) => {
