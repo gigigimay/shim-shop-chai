@@ -3,8 +3,6 @@ import styled from 'styled-components'
 import { Container, Row, Col } from 'reactstrap'
 import { COLOR, BREAKPOINT, IMAGE } from '../constants'
 
-// TODO: change img size in footer
-
 const TopWrapper = styled.div`
   background-color: ${COLOR.footer};
   padding: 30px 0;
@@ -24,8 +22,10 @@ const FooterCol = styled(Col).attrs({
   xs: '12',
   sm: '3',
 })`
+  img { width: 110px; }
   @media (max-width: ${BREAKPOINT.sm - 1}px) {
     padding: 8px 32px !important;
+    img { width: 150px; }
   }
 `
 
@@ -92,7 +92,7 @@ export default ({ items }) => (
       <Container>
         <Row>
           <Item>Copyright © 2003-2019</Item>
-          {items && items.map((item) => (
+          {items && items.map(item => (
             <Item sm="auto" key={item.key} className="hidden-xs">
               <a href={item.href} target="_blank" rel="noopener noreferrer">
                 {item.label}

@@ -16,12 +16,11 @@ class App extends React.Component {
   }
 
   getData = async () => {
-    const { data } = await axios.get('https://panjs.com/ywc.json')
+    const { data = {} } = await axios.get('https://panjs.com/ywc.json')
     data.navbarItems[0].key = 'regis'
     data.navbarItems[1].key = 'howto'
     data.navbarItems[2].key = 'shops'
     this.setState({ data })
-    console.log('data', data)
   }
 
   render() {
