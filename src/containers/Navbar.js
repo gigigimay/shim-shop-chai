@@ -3,8 +3,6 @@ import styled from 'styled-components'
 import { Container, Row, Col } from 'reactstrap'
 import { COLOR, BREAKPOINT, IMAGE } from '../constants'
 
-// TODO: add sidebar open/close in mobile
-
 const Wrapper = styled.div`
   margin-bottom: 53px;
   @media (max-width: ${BREAKPOINT.sm - 1}px) {
@@ -35,10 +33,25 @@ const Item = styled(Col)`
   a {
     text-decoration: none;
     color: ${COLOR.body};
+    position: relative;
+    ::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 5px;
+      bottom: -13px;
+      left: 0;
+      background-color: ${COLOR.blue};
+      transform: scaleX(0);
+      transition: .2s transform ease-in-out;
+    }
   }
   a:hover {
     color: ${COLOR.blue};
     text-decoration: none;
+    ::after {
+      transform: scaleX(1);
+    }
   }
 
   @media (max-width: ${BREAKPOINT.sm - 1}px) {
@@ -147,32 +160,41 @@ const MenuItem = styled(MobileCol)`
   }
 `
 
-class Navbar extends React.Component {
-  state = {
-    active: false,
+const Overlay = styled.div`
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9;
+  transition: background-color .25s ease-in-out;
+  background-color: rgba(0,0,0,0);
+  pointer-events: none;
+  &.active {
+    background-color: rgba(0,0,0,.2);
+    pointer-events: initial;
   }
+  @media (min-width: ${BREAKPOINT.sm}px) {
+    background-color: rgba(0,0,0,0) !important;
+    pointer-events: none !important;
+  }
+`
+
+class Navbar extends React.Component {
+  state = { active: false }
 
   onClick = () => this.setState(prevState => ({ active: !prevState.active }))
 
-  renderItems = () => {
-    const { items } = this.props
-    return items && items.map(item => (
-      <Item sm="auto" key={item.key} className="hidden-xs">
-        <a href={item.href} target="_blank" rel="noopener noreferrer">
-          {item.label}
-        </a>
-      </Item>
-    ))
-  }
+  onOverlayClick = () => this.setState({ active: false })
 
-  renderMenu = () => {
+  renderItems = (Component, props) => {
     const { items } = this.props
     return items && items.map(item => (
-      <MenuItem xs="12" key={item.key}>
+      <Component {...props} key={item.key}>
         <a href={item.href} target="_blank" rel="noopener noreferrer">
           {item.label}
         </a>
-      </MenuItem>
+      </Component>
     ))
   }
 
@@ -180,9 +202,9 @@ class Navbar extends React.Component {
     const { active } = this.state
     return (
       <Wrapper>
-        <NavbarContainer fluid className={active && 'active'}>
+        <NavbarContainer fluid>
           <NavbarRow>
-            {this.renderItems()}
+            {this.renderItems(Item, { sm: 'auto' })}
             <Logo>
               <a href="#top"><img src={IMAGE.logo.footer} alt="logo" /></a>
             </Logo>
@@ -195,9 +217,10 @@ class Navbar extends React.Component {
             </HamburgerCol>
           </NavbarRow>
           <HamburgerRow className={active && 'active'}>
-            {this.renderMenu()}
+            {this.renderItems(MenuItem, { xs: '12' })}
           </HamburgerRow>
         </NavbarContainer>
+        <Overlay onClick={this.onOverlayClick} className={active && 'active'} />
       </Wrapper>
     )
   }
