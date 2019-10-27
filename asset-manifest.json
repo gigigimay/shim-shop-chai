@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/shim-shop-chai/static/css/main.c718d646.chunk.css",
+    "main.js": "/shim-shop-chai/static/js/main.c9cf9449.chunk.js",
+    "main.js.map": "/shim-shop-chai/static/js/main.c9cf9449.chunk.js.map",
+    "runtime-main.js": "/shim-shop-chai/static/js/runtime-main.edcb3d35.js",
+    "runtime-main.js.map": "/shim-shop-chai/static/js/runtime-main.edcb3d35.js.map",
+    "static/css/2.0624914a.chunk.css": "/shim-shop-chai/static/css/2.0624914a.chunk.css",
+    "static/js/2.58c9642c.chunk.js": "/shim-shop-chai/static/js/2.58c9642c.chunk.js",
+    "static/js/2.58c9642c.chunk.js.map": "/shim-shop-chai/static/js/2.58c9642c.chunk.js.map",
+    "index.html": "/shim-shop-chai/index.html",
+    "precache-manifest.1fcc57f24037169b3ba574be5607a1db.js": "/shim-shop-chai/precache-manifest.1fcc57f24037169b3ba574be5607a1db.js",
+    "service-worker.js": "/shim-shop-chai/service-worker.js",
+    "static/css/2.0624914a.chunk.css.map": "/shim-shop-chai/static/css/2.0624914a.chunk.css.map",
+    "static/css/main.c718d646.chunk.css.map": "/shim-shop-chai/static/css/main.c718d646.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.edcb3d35.js",
+    "static/css/2.0624914a.chunk.css",
+    "static/js/2.58c9642c.chunk.js",
+    "static/css/main.c718d646.chunk.css",
+    "static/js/main.c9cf9449.chunk.js"
+  ]
+}
